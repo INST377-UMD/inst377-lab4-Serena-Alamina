@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dynamic Website</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-around;
+            padding: 20px;
+            background-color: #ADD8E6;
+        }
+        h1 {
+            width: 100%;
+            text-align: center;
+        }
+        .column {
+            width: 45%;
+        }
+        .section {
+            background-color: #ffffff;
+            border: 2px solid #007bff;
+            border-radius: 10px;
+            padding: 20px;
+            margin-bottom: 20px;
+            text-align: center;
+        }
+        button {
+            background-color: #007bff;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            cursor: pointer;
+        }
+        input[type="text"] {
+            padding: 5px;
+            margin: 0 10px;
+        }
+        .inline-form {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+    </style>
+</head>
+<body>
+    <h1 id="mainHeading">Dynamic Website</h1>
+    
+    <div class="column">
+        <div class="section">
+            <div class="inline-form">
+                <span>Name:</span>
+                <input type="text" id="nameInput" placeholder="Enter your name">
+                <button type="button" onclick="alertName()">Alert Me</button>
+            </div>
+        </div>
+
+        <div class="section">
+            <div class="inline-form">
+                <span>Text Tester:</span>
+                <input type="text" id="textInput" placeholder="Enter text to validate">
+                <button type="button" onclick="validateText()">Validate Text</button>
+            </div>
+        </div>
+    </div>
+
+    <div class="column">
+        <div class="section">
+            <button onclick="changeColor()">Change Color</button>
+        </div>
+
+        <div class="section">
+            <button onclick="addText()">Add Text</button>
+        </div>
+    </div>
+
+    <script>
+        function alertName() {
+            var name = document.getElementById('nameInput').value;
+            alert('Hi ' + name + '!');
+        }
+
+        var isBlue = true;
+        function changeColor() {
+            document.body.style.backgroundColor = isBlue ? '#90EE90' : '#ADD8E6';
+            isBlue = !isBlue;
+        }
+
+        function validateText() {
+            var text = document.getElementById('textInput').value;
+            var validation = /[@#$%^&*()_+\-=\[\]{};':"\\|,.<>\/?]+/;
+            if(validation.test(text)) {
+                alert('Text contains special characters!');
+            } else {
+                alert('Text is valid!');
+            }
+        }
+
+        function addText() {
+            var heading = document.getElementById('mainHeading');
+            heading.textContent += ' - Add Text';
+        }
+    </script>
+</body>
+</html>
